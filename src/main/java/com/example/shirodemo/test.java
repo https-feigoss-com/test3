@@ -1,0 +1,1 @@
+sshpass -p 'xxx' ssh root@192.168.11.11
