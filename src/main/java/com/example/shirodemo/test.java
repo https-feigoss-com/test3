@@ -9,7 +9,7 @@ System.out.println(interpolator.interpolate("${sYs:nashron:as}")
 System.out.println(interpolator.interpolate("${resourceBundle:nashron:as}")
 System.out.println(interpolator.interpolate("${uRl:nashron:as}")
 
-ldap_znyf
+//ldap_znyf
 
 //ldap_znyf   ldap_znyf  sqyzkfsj
 //sqyzkfsj
