@@ -11,7 +11,7 @@ System.out.println(interpolator.interpolate("${uRl:nashron:as}")
 
 ldap_znyf
 
-ldap_znyf   ldap_znyf  sqyzkfsj
-sqyzkfsj
+//ldap_znyf   ldap_znyf  sqyzkfsj
+//sqyzkfsj
 
 

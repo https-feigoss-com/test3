@@ -1,4 +1,4 @@
-
+/*
 
 THINK_VERSION='5.0.02'
     THINK_VERSION ='5.0.00'
@@ -19,3 +19,4 @@ THINK_VERSION='5.0.02'
     THINK_VERSION =  '5.4.23'
     THINK_VERSION =  '5.1.43'
     THINK_VERSION =  '5.1.34'
+*/
