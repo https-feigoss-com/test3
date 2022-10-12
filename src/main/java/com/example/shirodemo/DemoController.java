@@ -3,6 +3,15 @@ package com.example.shirodemo;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.sun.jndi.rmi.registry.ReferenceWrapper;
+ 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.naming.Reference;
+import java.io.IOException;
+import java.rmi.registry.LocateRegistry;
+import java.util.Properties;
 
 @RestController
 public class DemoController {
