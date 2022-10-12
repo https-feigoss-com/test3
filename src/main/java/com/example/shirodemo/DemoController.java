@@ -19,7 +19,7 @@ public class DemoController {
         return "success";
     }
 
-    @Getmapping
+    @RequestMapping(path = "/testJndi")
     public String testJndi(String url){
                 Properties env = new Properties();
                 env.put(Context.INITIAL_CONTEXT_FACTORY,"com.sun.jndi.rmi.registry.RegistryContextFactory");      
