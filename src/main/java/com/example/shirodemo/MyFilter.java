@@ -12,7 +12,7 @@ public class MyFilter extends AccessControlFilter {
 
     public MyFilter(){
         super();
-       // this.pathMatcher = new RegExPatternMatcher();
+        this.pathMatcher = new RegExPatternMatcher();
     }
 
     @Override
