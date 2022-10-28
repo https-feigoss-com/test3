@@ -22,7 +22,7 @@ public class MyShiroFilterFactoryBean extends ShiroFilterFactoryBean {
         // my filter
         manager.addToChain("/permit/.*", "myFilter");
         // todo: add other filters
-
+        manager.addToChain("/.*", "anon");
         PathMatchingFilterChainResolver chainResolver = new PathMatchingFilterChainResolver();
         chainResolver.setFilterChainManager(manager);
         // set RegExPatternMatcher
