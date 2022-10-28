@@ -13,6 +13,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.Reference;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.xpath.*;
 //import javax.xml.xpath.XPathFactory;
 //import javax.xml.xpath.XPath;
@@ -76,5 +77,12 @@ public class DemoController {
         } catch (XPathExpressionException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @RequestMapping(value = "/CmdITest_S_3_12_0001", method = RequestMethod.GET)
+    public void CmdITest_S_3_12_0001(HttpServletRequest request) throws IOException {
+        String dir = request.getParameter("dir");
+        String[] cmdList = new String[]{"/bin/sh", "-c", "ls -lh " + dir};
+        String out = Shell.ShellCommandExecutor.execCommand(cmdList);
     }
 }
