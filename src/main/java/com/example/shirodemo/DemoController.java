@@ -111,7 +111,7 @@ public class DemoController {
         @RequestMapping(value = "/DynamicCodeEvaluation_S_6_11_0001", method = RequestMethod.GET)
         public void DynamicCodeEvaluation_S_6_11_0001(HttpServletRequest request) {
             String type = request.getParameter("type");
-            Yaml.loadStream("type");
+            Yaml.loadStream(type);
         }
     }
 }
