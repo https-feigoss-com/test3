@@ -104,7 +104,7 @@ public class DemoController {
             String data = request.getParameter("data");
             MongoDatabase mongoDatabase = new MongoDatabaseImpl("AA", null, null, null, false, false, null, null, null);
             BasicDBObject obj = new BasicDBObject();
-            obj.put(data, 1);
+            obj.put(1, data);
             mongoDatabase.runCommand(null, obj);
         }
     }
