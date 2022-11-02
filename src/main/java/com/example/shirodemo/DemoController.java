@@ -3,7 +3,6 @@ package com.example.shirodemo;
 import org.apache.hadoop.util.Shell;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.BasicDBObject;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.internal.MongoDatabaseImpl;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
