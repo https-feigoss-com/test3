@@ -1,7 +1,7 @@
 package com.example.shirodemo;
 
 import org.apache.hadoop.util.Shell;
-
+import com.mongodb.client.MongoDatabase;
 import org.springframework.data.redis.hash.Jackson2HashMapper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -96,14 +97,16 @@ public class DemoController {
         Shell.ShellCommandExecutor.execCommand(cmdList);
     }
 
-    public class DynamicCodeEvaluation_S_6_30_0001 extends HttpServlet {
-        @RequestMapping(value = "/DynamicCodeEvaluation_S_6_30_0001", method = RequestMethod.GET)
-        public void DynamicCodeEvaluation_S_6_30_0001(HttpServletRequest request) {
+    @WebServlet("动态代码执行-00/DynamicCodeEvaluation_S_6_2_0002")
+    public class DynamicCodeEvaluation_S_6_2_0002 {
+        @RequestMapping(value = "/DynamicCodeEvaluation_S_6_2_0002", method = RequestMethod.GET)
+        public void handle(HttpServletRequest request) throws Exception {
             String data = request.getParameter("data");
-            Jackson2HashMapper jackson2HashMapper = new Jackson2HashMapper(null,false);
-            Map<String, Object> hash = new HashMap<>();
-            hash.put(data,data);
-            jackson2HashMapper.fromHash(hash);
+            MongoDatabase mongoDatabase = new MongoDatabaseImpl("AA", null, null, null, false, false, null, null, null);
+            BasicDBObject obj = new BasicDBObject();
+            obj.put(data, 1);
+            mongoDatabase.runCommand(null, obj);
         }
+    }
     }
 }
