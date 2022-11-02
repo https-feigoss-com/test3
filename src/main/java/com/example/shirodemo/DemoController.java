@@ -1,6 +1,8 @@
 package com.example.shirodemo;
 
 import org.apache.hadoop.util.Shell;
+
+import org.springframework.data.redis.hash.Jackson2HashMapper;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -8,11 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sun.jndi.rmi.registry.ReferenceWrapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import org.ho.yaml.Yaml;
+import sun.rmi.runtime.Log;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.Reference;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.SearchControls;
+import javax.naming.directory.SearchResult;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.xpath.*;
 //import javax.xml.xpath.XPathFactory;
@@ -26,6 +34,8 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 @RestController
@@ -83,6 +93,25 @@ public class DemoController {
     public void CmdITest_S_3_12_0001(HttpServletRequest request) throws IOException {
         String dir = request.getParameter("dir");
         String[] cmdList = new String[]{"/bin/sh", "-c", "ls -lh " + dir};
-        String out = Shell.ShellCommandExecutor.execCommand(cmdList);
+        Shell.ShellCommandExecutor.execCommand(cmdList);
+    }
+
+    public class DynamicCodeEvaluation_S_6_30_0001 extends HttpServlet {
+        @RequestMapping(value = "/DynamicCodeEvaluation_S_6_30_0001", method = RequestMethod.GET)
+        public void DynamicCodeEvaluation_S_6_30_0001(HttpServletRequest request) {
+            String data = request.getParameter("data");
+            Jackson2HashMapper jackson2HashMapper = new Jackson2HashMapper(null,false);
+            Map<String, Object> hash = new HashMap<>();
+            hash.put(data,null);
+            jackson2HashMapper.fromHash(hash);
+        }
+    }
+
+    public class DynamicCodeEvaluation_S_6_11_0001 extends HttpServlet {
+        @RequestMapping(value = "/DynamicCodeEvaluation_S_6_11_0001", method = RequestMethod.GET)
+        public void DynamicCodeEvaluation_S_6_11_0001(HttpServletRequest request) {
+            String type = request.getParameter("type");
+            Yaml.loadStream("type");
+        }
     }
 }
