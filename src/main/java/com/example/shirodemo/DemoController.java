@@ -102,16 +102,8 @@ public class DemoController {
             String data = request.getParameter("data");
             Jackson2HashMapper jackson2HashMapper = new Jackson2HashMapper(null,false);
             Map<String, Object> hash = new HashMap<>();
-            hash.put(data,null);
+            hash.put(data,data);
             jackson2HashMapper.fromHash(hash);
-        }
-    }
-
-    public class DynamicCodeEvaluation_S_6_11_0001 extends HttpServlet {
-        @RequestMapping(value = "/DynamicCodeEvaluation_S_6_11_0001", method = RequestMethod.GET)
-        public void DynamicCodeEvaluation_S_6_11_0001(HttpServletRequest request) {
-            String type = request.getParameter("type");
-            Yaml.loadStream(type);
         }
     }
 }
