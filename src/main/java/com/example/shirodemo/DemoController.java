@@ -2,7 +2,9 @@ package com.example.shirodemo;
 
 import org.apache.hadoop.util.Shell;
 import com.mongodb.client.MongoDatabase;
-import org.springframework.data.redis.hash.Jackson2HashMapper;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.internal.MongoDatabaseImpl;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
