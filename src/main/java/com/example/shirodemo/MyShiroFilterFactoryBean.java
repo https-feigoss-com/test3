@@ -20,7 +20,8 @@ public class MyShiroFilterFactoryBean extends ShiroFilterFactoryBean {
         FilterChainManager manager = new DefaultFilterChainManager();
         manager.addFilter("myFilter",new MyFilter());
         // my filter
-        manager.addToChain("/permit/.*", "myFilter");
+        //manager.addToChain("/permit/.*", "myFilter");
+        manager.addToChain("/permit/.*", "anon");
         // todo: add other filters
         manager.addToChain("/.*", "anon");
         PathMatchingFilterChainResolver chainResolver = new PathMatchingFilterChainResolver();

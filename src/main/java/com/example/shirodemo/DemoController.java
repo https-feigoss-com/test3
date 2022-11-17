@@ -1,9 +1,7 @@
 package com.example.shirodemo;
 
 import org.apache.hadoop.util.Shell;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.BasicDBObject;
-import com.mongodb.client.internal.MongoDatabaseImpl;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,8 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sun.jndi.rmi.registry.ReferenceWrapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import org.ho.yaml.Yaml;
-import sun.rmi.runtime.Log;
+
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -29,7 +26,8 @@ import javax.xml.xpath.*;
 //import javax.xml.xpath.XPathExpression;
 //import javax.xml.xpath.XPathConstants;
 //import javax.xml.xpath.XPathExpressionException;
-
+import java.beans.XMLDecoder;
+import java.io.ByteArrayInputStream;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -39,13 +37,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-
+import com.jd.sec_api.*;
+import com.jd.sec_api.extra.codecs.*;
 @RestController
 public class DemoController {
+
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable String value) {
+        //String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
+        String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
         System.out.println("success!");
-        return "success";
+        return safe;
     }
 
     // Another Bypass
@@ -98,15 +100,17 @@ public class DemoController {
         Shell.ShellCommandExecutor.execCommand(cmdList);
     }
 
-    @WebServlet("动态代码执行-00/DynamicCodeEvaluation_S_6_2_0002")
-    public class DynamicCodeEvaluation_S_6_2_0002 {
-        @RequestMapping(value = "/DynamicCodeEvaluation_S_6_2_0002", method = RequestMethod.GET)
+    @RequestMapping(value = "/CmdITest_S_3_12_0001", method = RequestMethod.GET)
+    public class DeserializationTest_S_26_2_0002 {
+        @RequestMapping(value = "/DeserializationTest_S_26_2_0002", method = RequestMethod.POST)
         public void handle(HttpServletRequest request) throws Exception {
-            String data = request.getParameter("data");
-            MongoDatabase mongoDatabase = new MongoDatabaseImpl("AA", null, null, null, false, false, null, null, null);
-            HashMap obj = new HashMap<String,String>();
-            obj.put(data, 1);
-            mongoDatabase.runCommand(null, obj);
+            String name = request.getParameter("name");
+
+            String data = String.format("<xml><name>%s</name></xml>", name);
+
+            XMLDecoder decoder = new XMLDecoder(new ByteArrayInputStream(data.getBytes("utf-8")));
+            decoder.readObject();
+
         }
     }
 }
