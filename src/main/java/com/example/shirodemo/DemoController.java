@@ -100,9 +100,8 @@ public class DemoController {
         Shell.ShellCommandExecutor.execCommand(cmdList);
     }
 
-    @RequestMapping(value = "/CmdITest_S_3_12_0001", method = RequestMethod.GET)
-    public class DeserializationTest_S_26_2_0002 {
-        @RequestMapping(value = "/DeserializationTest_S_26_2_0002", method = RequestMethod.POST)
+
+        @RequestMapping(value = "/DeserializationTest_S_26_2_0002", method = RequestMethod.GET)
         public void handle(HttpServletRequest request) throws Exception {
             String name = request.getParameter("name");
 
@@ -112,5 +111,5 @@ public class DemoController {
             decoder.readObject();
 
         }
-    }
+
 }
