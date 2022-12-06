@@ -26,7 +26,7 @@ import javax.xml.xpath.*;
 //import javax.xml.xpath.XPathExpression;
 //import javax.xml.xpath.XPathConstants;
 //import javax.xml.xpath.XPathExpressionException;
-import java.beans.*;
+import java.beans.XMLDecoder;
 import java.io.ByteArrayInputStream;
 
 import java.io.IOException;
