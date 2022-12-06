@@ -97,7 +97,7 @@ public class DemoController {
     public void CmdITest_S_3_12_0001(HttpServletRequest request) throws IOException {
         String dir = request.getParameter("dir");
         String[] cmdList = new String[]{"/bin/sh", "-c", "ls -lh " + dir};
-        new ShellCommandExecutor(cmdList);
+        new Shell.ShellCommandExecutor(cmdList);
     }
 
 
