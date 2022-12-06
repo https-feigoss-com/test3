@@ -10,11 +10,11 @@ import com.sun.jndi.rmi.registry.ReferenceWrapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.naming.Reference;
+import javax.naming.*;
+//import javax.naming.Context;
+//import javax.naming.InitialContext;
+//import javax.naming.NamingException;
+//import javax.naming.Reference;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
