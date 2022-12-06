@@ -1,6 +1,6 @@
 package com.example.shirodemo;
 
-import org.apache.hadoop.util.*;
+import org.apache.hadoop.util.Shell.ShellCommandExecutor;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,7 +97,7 @@ public class DemoController {
     public void CmdITest_S_3_12_0001(HttpServletRequest request) throws IOException {
         String dir = request.getParameter("dir");
         String[] cmdList = new String[]{"/bin/sh", "-c", "ls -lh " + dir};
-        new Shell.ShellCommandExecutor(cmdList);
+        new ShellCommandExecutor(cmdList);
     }
 
 
