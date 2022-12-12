@@ -127,5 +127,6 @@ public class DemoController {
             dbf.setXIncludeAware(false);
 
             Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
+        }
 
 }
