@@ -39,6 +39,10 @@ import java.util.Map;
 import java.util.Properties;
 import com.jd.sec_api.*;
 import com.jd.sec_api.extra.codecs.*;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 @RestController
 public class DemoController {
 
@@ -111,5 +115,17 @@ public class DemoController {
             decoder.readObject();
 
         }
+        @RequestMapping(value = "/testXXE", method = RequestMethod.GET)
+        public void handle(HttpServletRequest request) throws Exception {
+            String code = request.getParameter("code");
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            // 禁用 DOCTYPE
+            dbf.setExpandEntityReferences(false);
+            dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+            dbf.setXIncludeAware(false);
+
+            Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
 
 }
