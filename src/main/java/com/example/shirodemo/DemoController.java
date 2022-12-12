@@ -120,12 +120,13 @@ public class DemoController {
             String code = request.getParameter("code");
             String body = request.getParameter("body");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             // 禁用 DOCTYPE
+             dbf.setExpandEntityReferences(false);
+             dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+             dbf.setXIncludeAware(false);
             DocumentBuilder db = dbf.newDocumentBuilder();
 
-            // 禁用 DOCTYPE
-            dbf.setExpandEntityReferences(false);
-            dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
-            dbf.setXIncludeAware(false);
+           
 
             Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
         }
