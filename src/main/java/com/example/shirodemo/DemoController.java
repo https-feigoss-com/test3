@@ -118,6 +118,7 @@ public class DemoController {
         @RequestMapping(value = "/testXXE", method = RequestMethod.GET)
         public void handle(HttpServletRequest request) throws Exception {
             String code = request.getParameter("code");
+            String body = request.getParameter("body");
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
 
