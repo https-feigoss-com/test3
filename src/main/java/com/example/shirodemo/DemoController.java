@@ -135,7 +135,7 @@ public class DemoController {
             Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
         }
         @RequestMapping(value = "/testLocalDirAllocator", method = RequestMethod.GET)
-        public void testXXE(HttpServletRequest request) throws Exception {
+        public void testLocalDirAllocator(HttpServletRequest request) throws Exception {
             String pathString = request.getParameter("pathString");
             JobInfo jobInfo = new JobInfo("");
             jobInfo.recoverJobHistoryFile(new JobConf(),new Path(pathString));
