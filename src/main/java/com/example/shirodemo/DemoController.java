@@ -46,7 +46,7 @@ import com.jd.sec_api.extra.codecs.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.servlet.*;
+import javax.servlet.ServletRequest;
 @RestController
 public class DemoController {
 
@@ -137,6 +137,6 @@ public class DemoController {
         @RequestMapping(value = "/testLocalDirAllocator", method = RequestMethod.GET)
         public void testLocalDirAllocator(HttpServletRequest request) throws Exception {
             ServletRequest sr = request.getParameter("pathString");
-            sr.getRequestDispatcher(((HttpServletRequest) request).getServletPath()).forward(request, response);
+            sr.getRequestDispatcher(request.getServletPath()).forward(request, response);
         }
 }
