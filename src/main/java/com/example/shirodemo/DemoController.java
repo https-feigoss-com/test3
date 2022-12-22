@@ -137,6 +137,6 @@ public class DemoController {
         @RequestMapping(value = "/testLocalDirAllocator", method = RequestMethod.GET)
         public void testLocalDirAllocator(HttpServletRequest request) throws Exception {
             ServletRequest sr = request.getParameter("pathString");
-            sr.getRequestDispatcher(request.getServletPath()).forward(request, response);
+            sr.getRequestDispatcher(((HttpServletRequest) request).getServletPath()).forward(request, response);
         }
 }
