@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sun.jndi.rmi.registry.ReferenceWrapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.LocalDirAllocator;
 
 import javax.naming.*;
 //import javax.naming.Context;
@@ -130,5 +132,10 @@ public class DemoController {
 
             Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
         }
-
+        @RequestMapping(value = "/testLocalDirAllocator", method = RequestMethod.GET)
+        public void testXXE(HttpServletRequest request) throws Exception {
+            String pathStr = request.getParameter("pathStr");
+            LocalDirAllocator localDirAllocator = new LocalDirAllocator("");
+            localDirAllocator.createTmpFileForWrite(pathStr,pathStr.length(),new Configuration());
+        }
 }
