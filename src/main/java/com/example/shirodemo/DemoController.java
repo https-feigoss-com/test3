@@ -59,7 +59,6 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.Source;
 import javax.xml.xquery.XQExpression;
-import javax.xml.xquery.*;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.TimeZone;
