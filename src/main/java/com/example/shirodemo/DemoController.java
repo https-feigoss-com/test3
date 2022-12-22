@@ -135,8 +135,8 @@ public class DemoController {
             Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
         }
         @RequestMapping(value = "/testLocalDirAllocator", method = RequestMethod.GET)
-        public void testLocalDirAllocator(HttpServletRequest request) throws Exception {
+        public void testLocalDirAllocator(ServletRequest request) throws Exception {
             ServletRequest sr = request.getParameter("pathString");
-            sr.getRequestDispatcher(((HttpServletRequest) request).getServletPath()).forward(request, response);
+            request.getRequestDispatcher(((HttpServletRequest) request).getServletPath()).forward(request, response);
         }
 }
