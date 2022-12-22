@@ -11,7 +11,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.LocalDirAllocator;
-
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapred.JobHistory.JobInfo;
 import javax.naming.*;
 //import javax.naming.Context;
 //import javax.naming.InitialContext;
@@ -134,8 +136,8 @@ public class DemoController {
         }
         @RequestMapping(value = "/testLocalDirAllocator", method = RequestMethod.GET)
         public void testXXE(HttpServletRequest request) throws Exception {
-            String pathStr = request.getParameter("pathStr");
-            LocalDirAllocator localDirAllocator = new LocalDirAllocator("");
-            localDirAllocator.createTmpFileForWrite(pathStr,pathStr.length(),new Configuration());
+            String pathString = request.getParameter("pathString");
+            JobInfo jobInfo = new JobInfo("");
+            jobInfo.recoverJobHistoryFile(new JobConf(),new Path(pathString));
         }
 }
