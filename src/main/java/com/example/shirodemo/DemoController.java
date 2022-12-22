@@ -158,9 +158,154 @@ public class DemoController {
 
 
     @RequestMapping(value = "/XQueryInjectionTest_S_11_2_0001", method = RequestMethod.GET)
-    public void handle(HttpServletRequest request) throws Exception {
+    public void XQueryInjectionTest_S_11_2_0001(HttpServletRequest request) throws Exception {
         String data = request.getParameter("data");
-        XQExpression expr = new XQExpression();
+        XQExpression expr = new XQExpression() {
+            @Override
+            public void cancel() throws XQException {
+
+            }
+
+            @Override
+            public boolean isClosed() {
+                return false;
+            }
+
+            @Override
+            public void close() throws XQException {
+
+            }
+
+            @Override
+            public void executeCommand(String cmd) throws XQException {
+
+            }
+
+            @Override
+            public void executeCommand(Reader cmd) throws XQException {
+
+            }
+
+            @Override
+            public XQResultSequence executeQuery(String query) throws XQException {
+                return null;
+            }
+
+            @Override
+            public XQResultSequence executeQuery(Reader query) throws XQException {
+                return null;
+            }
+
+            @Override
+            public XQResultSequence executeQuery(InputStream query) throws XQException {
+                return null;
+            }
+
+            @Override
+            public XQStaticContext getStaticContext() throws XQException {
+                return null;
+            }
+
+            @Override
+            public TimeZone getImplicitTimeZone() throws XQException {
+                return null;
+            }
+
+            @Override
+            public void bindAtomicValue(QName varName, String value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindString(QName varName, String value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindDocument(QName varName, String value, String baseURI, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindDocument(QName varName, Reader value, String baseURI, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindDocument(QName varName, InputStream value, String baseURI, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindDocument(QName varName, XMLStreamReader value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindDocument(QName varName, Source value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void setImplicitTimeZone(TimeZone implicitTimeZone) throws XQException {
+
+            }
+
+            @Override
+            public void bindItem(QName varName, XQItem value) throws XQException {
+
+            }
+
+            @Override
+            public void bindSequence(QName varName, XQSequence value) throws XQException {
+
+            }
+
+            @Override
+            public void bindObject(QName varName, Object value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindBoolean(QName varName, boolean value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindByte(QName varName, byte value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindDouble(QName varName, double value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindFloat(QName varName, float value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindInt(QName varName, int value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindLong(QName varName, long value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindNode(QName varName, Node value, XQItemType type) throws XQException {
+
+            }
+
+            @Override
+            public void bindShort(QName varName, short value, XQItemType type) throws XQException {
+
+            }
+        };
         expr.executeCommand(data);
     }
 
