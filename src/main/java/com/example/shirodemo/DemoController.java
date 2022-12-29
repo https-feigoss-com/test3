@@ -48,7 +48,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.servlet.ServletRequest;
 import org.xml.sax.InputSource;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.w3c.dom.Node;
@@ -156,7 +163,14 @@ public class DemoController {
             inputSource.evaluate();//找不到
         }
 
-
+        @RequestMapping(value = "/NoSQLInjectionTest_S_2_5_0001", method = RequestMethod.GET)
+        public void NoSQLInjectionTest_S_2_5_0001(HttpServletRequest request) throws Exception {
+                String data = request.getParameter("data");
+                ScanRequest.Builder builder =  ScanRequest.builder();
+                Map<String, String> map = new HashMap<>();
+                map.put("key", data);
+                builder.expressionAttributeNames(map);
+        }
     @RequestMapping(value = "/XQueryInjectionTest_S_11_2_0001", method = RequestMethod.GET)
     public void XQueryInjectionTest_S_11_2_0001(HttpServletRequest request) throws Exception {
         String data = request.getParameter("data");
