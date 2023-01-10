@@ -14,6 +14,14 @@
             </includes>
         </fileSet>
         <fileSet>
+            <directory>src/main/resources/</directory>
+            <outputDirectory>conf</outputDirectory>
+            <includes>
+                <include>*.properties</include>
+                <include>*/*.properties</include>
+            </includes>
+        </fileSet>
+        <fileSet>
             <directory>src/main/resources/bin</directory>
             <outputDirectory>bin</outputDirectory>
             <filtered>true</filtered>
