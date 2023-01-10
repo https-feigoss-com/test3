@@ -12,8 +12,8 @@ import org.w3c.dom.NodeList;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.LocalDirAllocator;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.mapred.JobConf;
-import org.apache.hadoop.mapred.JobHistory.JobInfo;
+//conf import org.apache.hadoop.mapred.JobConf;
+//conf import org.apache.hadoop.mapred.JobHistory.JobInfo;
 import javax.naming.*;
 //import javax.naming.Context;
 //import javax.naming.InitialContext;
@@ -50,7 +50,7 @@ import javax.servlet.ServletRequest;
 import org.xml.sax.InputSource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
+//conf import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -65,14 +65,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.Source;
-import javax.xml.xquery.*;
+//conf import javax.xml.xquery.*;
 import java.io.InputStream;
 import java.io.Reader;
 import java.util.TimeZone;
 @RestController
 public class DemoController {
 
-    @RequestMapping(path = "/permit/{value}")
+    /*@RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable String value) {
         //String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
         String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
@@ -322,5 +322,5 @@ public class DemoController {
         };
         expr.executeCommand(data);
     }
-
+    */
 }
