@@ -1,1 +1,0 @@
-INDEX_SERVER_ENDPOINT = "http://indexserver.aces.jd.local/kms/v1/host"

@@ -52,6 +52,11 @@
             <artifactId>sec_api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.jd.security.configsec</groupId>
+            <artifactId>spring-configsec-sdk</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
