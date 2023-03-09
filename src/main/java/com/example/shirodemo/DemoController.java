@@ -32,7 +32,7 @@ import javax.xml.xpath.*;
 //import javax.xml.xpath.XPathExpressionException;
 import java.beans.*;
 import java.io.ByteArrayInputStream;
-
+import java.io.File;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -41,6 +41,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+
+import com.jd.jss.Credential;
+import com.jd.jss.JingdongStorageService;
+import com.jd.jss.client.ClientConfig;
 import com.jd.sec_api.*;
 import com.jd.sec_api.extra.codecs.*;
 
@@ -72,12 +76,12 @@ import java.util.TimeZone;
 @RestController
 public class DemoController {
 
-    /*@RequestMapping(path = "/permit/{value}")
+    @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable String value) {
         //String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
-        String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
+        //String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
         System.out.println("success!");
-        return safe;
+        return "ok";
     }
 
     // Another Bypass
@@ -123,22 +127,15 @@ public class DemoController {
         }
     }
 
-    @RequestMapping(value = "/CmdITest_S_3_12_0001", method = RequestMethod.GET)
-    public void CmdITest_S_3_12_0001(HttpServletRequest request) throws IOException {
-        String dir = request.getParameter("dir");
-        String[] cmdList = new String[]{"/bin/sh", "-c", "ls -lh " + dir};
-        new Shell.ShellCommandExecutor(cmdList);
-    }
-
 
         @RequestMapping(value = "/DeserializationTest_S_26_2_0002", method = RequestMethod.GET)
         public void handle(HttpServletRequest request) throws Exception {
             String name = request.getParameter("name");
+            ClientConfig config = new ClientConfig();
+            JingdongStorageService jss = new JingdongStorageService(new Credential("accessKey", "secretKey"),config);
 
-            String data = String.format("<xml><name>%s</name></xml>", name);
+            String md5 = jss.bucket("dengliang.org").object("index.html").entity(new File("/export/test.html")).contentType(name).put();
 
-            XMLDecoder decoder = new XMLDecoder(new ByteArrayInputStream(data.getBytes("utf-8")));
-            decoder.readObject();
 
         }
         @RequestMapping(value = "/testXXE", method = RequestMethod.GET)
@@ -156,171 +153,4 @@ public class DemoController {
 
             Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
         }
-        @RequestMapping(value = "/testLocalDirAllocator", method = RequestMethod.GET)
-        public void testLocalDirAllocator(ServletRequest request) throws Exception {
-            String s = request.getParameter("s");
-            InputSource inputSource = new InputSource();
-            inputSource.evaluate();//找不到
-        }
-
-        @RequestMapping(value = "/NoSQLInjectionTest_S_2_5_0001", method = RequestMethod.GET)
-        public void NoSQLInjectionTest_S_2_5_0001(HttpServletRequest request) throws Exception {
-                String data = request.getParameter("data");
-                ScanRequest.Builder builder =  ScanRequest.builder();
-                Map<String, String> map = new HashMap<>();
-                map.put("key", data);
-                builder.expressionAttributeNames(map);
-        }
-    @RequestMapping(value = "/XQueryInjectionTest_S_11_2_0001", method = RequestMethod.GET)
-    public void XQueryInjectionTest_S_11_2_0001(HttpServletRequest request) throws Exception {
-        String data = request.getParameter("data");
-        XQExpression expr = new XQExpression() {
-            @Override
-            public void cancel() throws XQException {
-
-            }
-
-            @Override
-            public boolean isClosed() {
-                return false;
-            }
-
-            @Override
-            public void close() throws XQException {
-
-            }
-
-            @Override
-            public void executeCommand(String cmd) throws XQException {
-
-            }
-
-            @Override
-            public void executeCommand(Reader cmd) throws XQException {
-
-            }
-
-            @Override
-            public XQResultSequence executeQuery(String query) throws XQException {
-                return null;
-            }
-
-            @Override
-            public XQResultSequence executeQuery(Reader query) throws XQException {
-                return null;
-            }
-
-            @Override
-            public XQResultSequence executeQuery(InputStream query) throws XQException {
-                return null;
-            }
-
-            @Override
-            public XQStaticContext getStaticContext() throws XQException {
-                return null;
-            }
-
-            @Override
-            public TimeZone getImplicitTimeZone() throws XQException {
-                return null;
-            }
-
-            @Override
-            public void bindAtomicValue(QName varName, String value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindString(QName varName, String value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindDocument(QName varName, String value, String baseURI, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindDocument(QName varName, Reader value, String baseURI, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindDocument(QName varName, InputStream value, String baseURI, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindDocument(QName varName, XMLStreamReader value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindDocument(QName varName, Source value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void setImplicitTimeZone(TimeZone implicitTimeZone) throws XQException {
-
-            }
-
-            @Override
-            public void bindItem(QName varName, XQItem value) throws XQException {
-
-            }
-
-            @Override
-            public void bindSequence(QName varName, XQSequence value) throws XQException {
-
-            }
-
-            @Override
-            public void bindObject(QName varName, Object value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindBoolean(QName varName, boolean value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindByte(QName varName, byte value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindDouble(QName varName, double value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindFloat(QName varName, float value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindInt(QName varName, int value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindLong(QName varName, long value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindNode(QName varName, Node value, XQItemType type) throws XQException {
-
-            }
-
-            @Override
-            public void bindShort(QName varName, short value, XQItemType type) throws XQException {
-
-            }
-        };
-        expr.executeCommand(data);
-    }
-    */
 }

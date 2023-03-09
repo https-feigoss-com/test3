@@ -18,6 +18,11 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>com.jd.jss</groupId>
+            <artifactId>jss-sdk-java</artifactId>
+            <version>1.4.8-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
