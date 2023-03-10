@@ -102,7 +102,7 @@ public class DemoController {
         ctx.bind("evil", referenceWrapper);
         return "success";
     }*/
-
+    /*
     @RequestMapping(path = "/testcmd")
     public void testJcmd(final String dir) throws IOException, SQLException {
         System.out.println(dir);
@@ -149,4 +149,5 @@ public class DemoController {
 
         final Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
         }
+    */
 }
