@@ -70,7 +70,7 @@
             <url>http://maven.restlet.org</url>
         </repository>
     </repositories>-->
-    <!--<build>
+    <build>
         <plugins>
          
          <plugin>
@@ -125,5 +125,5 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>-->
+    </build>
 </project>
