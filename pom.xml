@@ -31,7 +31,7 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.9.0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
             <version>2.5.1</version>
@@ -40,7 +40,7 @@
             <groupId>org.restlet.jse</groupId>
             <artifactId>org.restlet</artifactId>
             <version>3.0-M1</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
@@ -52,7 +52,7 @@
             <artifactId>spring-data-redis</artifactId>
             <version>1.8.0.RELEASE</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.jd</groupId>
             <artifactId>sec_api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
@@ -61,7 +61,7 @@
             <groupId>com.jd.security.configsec</groupId>
             <artifactId>spring-configsec-sdk</artifactId>
             <version>1.0.3-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <repositories>
         <repository>
