@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServlet;*/
 //import javax.xml.xpath.XPathExpressionException;
 //import java.beans.*;
 //import java.io.ByteArrayInputStream;
-//import java.io.File;
+import java.io.File;
 //import java.io.IOException;
 //import java.rmi.RemoteException;
 //import java.rmi.registry.LocateRegistry;
@@ -40,15 +40,15 @@ import java.util.HashMap;
 import java.util.Map;*/
 //import java.util.Properties;
 
-//import com.jd.jss.Credential;
-//import com.jd.jss.JingdongStorageService;
-//import com.jd.jss.client.ClientConfig;
+import com.jd.jss.Credential;
+import com.jd.jss.JingdongStorageService;
+import com.jd.jss.client.ClientConfig;
 /*import com.jd.sec_api.*;
 import com.jd.sec_api.extra.codecs.*;*/
 
 //import javax.xml.parsers.DocumentBuilder;
 //import javax.xml.parsers.DocumentBuilderFactory;
-/*import javax.servlet.ServletRequest;
+import javax.servlet.ServletRequest;
 import org.xml.sax.InputSource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,7 +70,7 @@ import javax.xml.transform.Source;
 //conf import javax.xml.xquery.*;
 import java.io.InputStream;
 import java.io.Reader;
-import java.util.TimeZone;*/
+import java.util.TimeZone;
 @RestController
 public class DemoController {
 
@@ -124,7 +124,7 @@ public class DemoController {
             throw new RuntimeException(e);
         }
     }
-
+    */
     @RequestMapping(value = "/DeserializationTest_S_26_2_0002", method = RequestMethod.GET)
     public void handle(final HttpServletRequest request) throws Exception {
         final String name = request.getParameter("name");
@@ -135,7 +135,7 @@ public class DemoController {
                 .contentType(name).put();
 
     }
-
+    /*
     @RequestMapping(value = "/testXXE", method = RequestMethod.GET)
     public void testXXE(final HttpServletRequest request) throws Exception {
         final String code = request.getParameter("code");
