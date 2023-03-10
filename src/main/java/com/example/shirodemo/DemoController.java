@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sun.jndi.rmi.registry.ReferenceWrapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.LocalDirAllocator;
-import org.apache.hadoop.fs.Path;
+
 //conf import org.apache.hadoop.mapred.JobConf;
 //conf import org.apache.hadoop.mapred.JobHistory.JobInfo;
 import javax.naming.*;
