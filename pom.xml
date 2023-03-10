@@ -63,13 +63,13 @@
             <version>1.0.3-SNAPSHOT</version>
         </dependency>-->
     </dependencies>
-    <!--<repositories>
+    <repositories>
         <repository>
             <id>maven-restlet</id>
             <name>asd</name>
             <url>http://maven.restlet.org</url>
         </repository>
-    </repositories>-->
+    </repositories>
     <build>
         <plugins>
          
