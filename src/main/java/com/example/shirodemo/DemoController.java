@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 //import com.sun.jndi.rmi.registry.ReferenceWrapper;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
+//import org.w3c.dom.Document;
+//import org.w3c.dom.NodeList;
 
 //conf import org.apache.hadoop.mapred.JobConf;
 //conf import org.apache.hadoop.mapred.JobHistory.JobInfo;
@@ -21,33 +21,33 @@ import org.w3c.dom.NodeList;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import javax.servlet.http.HttpServlet;*/
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.xpath.*;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.xml.xpath.*;
 //import javax.xml.xpath.XPathFactory;
 //import javax.xml.xpath.XPath;
 //import javax.xml.xpath.XPathExpression;
 //import javax.xml.xpath.XPathConstants;
 //import javax.xml.xpath.XPathExpressionException;
 //import java.beans.*;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
+//import java.io.ByteArrayInputStream;
+//import java.io.File;
+//import java.io.IOException;
 //import java.rmi.RemoteException;
 //import java.rmi.registry.LocateRegistry;
-import java.sql.*;
+//import java.sql.*;
 /*import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;*/
 //import java.util.Properties;
 
-import com.jd.jss.Credential;
-import com.jd.jss.JingdongStorageService;
-import com.jd.jss.client.ClientConfig;
+//import com.jd.jss.Credential;
+//import com.jd.jss.JingdongStorageService;
+//import com.jd.jss.client.ClientConfig;
 /*import com.jd.sec_api.*;
 import com.jd.sec_api.extra.codecs.*;*/
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+//import javax.xml.parsers.DocumentBuilder;
+//import javax.xml.parsers.DocumentBuilderFactory;
 /*import javax.servlet.ServletRequest;
 import org.xml.sax.InputSource;
 import org.springframework.web.bind.annotation.RequestMapping;
