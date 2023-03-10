@@ -1,18 +1,18 @@
 package com.example.shirodemo;
 
-import org.apache.hadoop.util.Shell.ShellCommandExecutor;
+//import org.apache.hadoop.util.Shell.ShellCommandExecutor;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.sun.jndi.rmi.registry.ReferenceWrapper;
+//import com.sun.jndi.rmi.registry.ReferenceWrapper;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 //conf import org.apache.hadoop.mapred.JobConf;
 //conf import org.apache.hadoop.mapred.JobHistory.JobInfo;
-import javax.naming.*;
+//import javax.naming.*;
 //import javax.naming.Context;
 //import javax.naming.InitialContext;
 //import javax.naming.NamingException;
@@ -28,17 +28,17 @@ import javax.xml.xpath.*;
 //import javax.xml.xpath.XPathExpression;
 //import javax.xml.xpath.XPathConstants;
 //import javax.xml.xpath.XPathExpressionException;
-import java.beans.*;
+//import java.beans.*;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
+//import java.rmi.RemoteException;
+//import java.rmi.registry.LocateRegistry;
 import java.sql.*;
 /*import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;*/
-import java.util.Properties;
+//import java.util.Properties;
 
 import com.jd.jss.Credential;
 import com.jd.jss.JingdongStorageService;
@@ -89,7 +89,7 @@ public class DemoController {
         return "success";
     }
 
-    @RequestMapping(path = "/testJndi")
+    /*@RequestMapping(path = "/testJndi")
     public String testJndi(final String url) throws NamingException, RemoteException {
         final Properties env = new Properties();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.rmi.registry.RegistryContextFactory");
@@ -101,7 +101,7 @@ public class DemoController {
         final ReferenceWrapper referenceWrapper = new ReferenceWrapper(reference);
         ctx.bind("evil", referenceWrapper);
         return "success";
-    }
+    }*/
 
     @RequestMapping(path = "/testcmd")
     public void testJcmd(final String dir) throws IOException, SQLException {
