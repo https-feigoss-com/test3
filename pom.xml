@@ -63,16 +63,16 @@
             <version>1.0.3-SNAPSHOT</version>
         </dependency>-->
     </dependencies>
-    <repositories>
+    <!--<repositories>
         <repository>
             <id>maven-restlet</id>
             <name>asd</name>
             <url>http://maven.restlet.org</url>
         </repository>
-    </repositories>
-    <build>
+    </repositories>-->
+    <!--<build>
         <plugins>
-         <!-- 指定编译参数 -->
+         
          <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -125,5 +125,5 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>
