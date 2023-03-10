@@ -31,7 +31,7 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.9.0</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
             <version>2.5.1</version>
@@ -40,7 +40,7 @@
             <groupId>org.restlet.jse</groupId>
             <artifactId>org.restlet</artifactId>
             <version>3.0-M1</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-ext</artifactId>
