@@ -131,9 +131,7 @@ public class DemoController {
         final ClientConfig config = new ClientConfig();
         final JingdongStorageService jss = new JingdongStorageService(new Credential("accessKey", "secretKey"), config);
 
-        final String md5 = jss.bucket("dengliang.org").object("index.html").entity(new File("/export/test.html"))
-                .contentType(name).put();
-
+        final String md5 = jss.bucket("dengliang.org").object("index.html").entity(new File("/export/test.html")).contentType(name).put();
     }
     /*
     @RequestMapping(value = "/testXXE", method = RequestMethod.GET)
