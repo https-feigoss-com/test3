@@ -52,9 +52,9 @@
             <artifactId>spring-data-redis</artifactId>
             <version>1.8.0.RELEASE</version>
         </dependency>
-        <dependency> <groupId>com.alibaba</groupId> <artifactId>fastjson</artifactId> <version>1.2.36</version> </dependency>
+        <!--<dependency> <groupId>com.alibaba</groupId> <artifactId>fastjson</artifactId> <version>1.2.36</version> </dependency>
         <dependency><groupId>com.thoughtworks.xstream</groupId><artifactId>xstream</artifactId><version>1.4.10</version></dependency>
-
+        -->
 
         <!--<dependency>
             <groupId>com.jd</groupId>
