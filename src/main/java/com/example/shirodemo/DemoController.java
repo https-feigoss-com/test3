@@ -102,7 +102,7 @@ public class DemoController {
         ctx.bind("evil", referenceWrapper);
         return "success";
     }*/
-    /*
+    
     @RequestMapping(path = "/testcmd")
     public void testJcmd(final String dir) throws IOException, SQLException {
         System.out.println(dir);
@@ -111,7 +111,7 @@ public class DemoController {
         // String[] cmdList = new String[]{"/bin/sh", "-c", "\"ls;pwd\""};
         final Process p = Runtime.getRuntime().exec(cmdList);
     }
-
+/*
     @RequestMapping(value = "/XPathTest_S_12_1_0001", method = RequestMethod.GET)
     public NodeList XPathTest_S_12_1_0001(final Document document, final String string) {
         final XPathFactory xPathfactory = XPathFactory.newInstance();
