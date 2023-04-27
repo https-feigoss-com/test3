@@ -125,15 +125,15 @@ public class DemoController {
         }
     }
     */
-    @RequestMapping(value = "/DeserializationTest_S_26_2_0002", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public void handle(final HttpServletRequest request) throws Exception {
         final String name = request.getParameter("name");
         final ClientConfig config = new ClientConfig();
         final JingdongStorageService jss = new JingdongStorageService(new Credential("accessKey", "secretKey"), config);
 
-        final String md5 = jss.bucket("dengliang.org").object("index.html").entity(new File("/export/test.html")).contentType(name).put();
+        final String md5 = jss.contentType(name).put();
     }
-    /*
+    /*bucket("dengliang.org").object("index.html").entity(new File("/export/test.html")).
     @RequestMapping(value = "/testXXE", method = RequestMethod.GET)
     public void testXXE(final HttpServletRequest request) throws Exception {
         final String code = request.getParameter("code");
