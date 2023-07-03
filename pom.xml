@@ -48,6 +48,11 @@
             <artifactId>spring-data-redis</artifactId>
             <version>1.8.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.ttzero</groupId>
+            <artifactId>eec</artifactId>
+            <version>0.4.12</version>
+        </dependency>
         <!--
         <dependency> <groupId>com.alibaba</groupId> <artifactId>fastjson</artifactId> <version>1.2.36</version> </dependency>
         <dependency><groupId>com.thoughtworks.xstream</groupId><artifactId>xstream</artifactId><version>1.4.10</version></dependency>
@@ -57,14 +62,14 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.9.1</version>
         </dependency>
-        
-
-        
-        <!--<dependency>
+        <dependency>
             <groupId>com.jd</groupId>
             <artifactId>sec_api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.3-SNAPSHOT</version>
         </dependency>
+
+
+        <!--
         <dependency>
             <groupId>com.jd.security.configsec</groupId>
             <artifactId>spring-configsec-sdk</artifactId>
