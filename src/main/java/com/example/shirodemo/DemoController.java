@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.apache.commons.beanutils.BeanUtils;
 //import com.sun.jndi.rmi.registry.ReferenceWrapper;
 //import org.w3c.dom.Document;
 //import org.w3c.dom.NodeList;
@@ -75,6 +77,7 @@ import javax.xml.transform.Source;
 //conf import javax.xml.xquery.*;
 import java.io.InputStream;
 import java.io.Reader;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.TimeZone;
@@ -155,6 +158,17 @@ public class DemoController {
      * final Document doc = db.parse(new ByteArrayInputStream(body.getBytes(code)));
      * }
      */
+
+    @RequestMapping("/test")
+    public String test(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+        String prop = request.getParameter("prop");
+        String value = request.getParameter("value");
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put(prop, value);
+        String materialAuditPo = new String();
+        BeanUtils.populate(materialAuditPo, hashMap);
+        return materialAuditPo;
+    }
     public static void main(String[] args) throws URISyntaxException {
         URI url = new URI("http://img30.360buyimg.com");
         System.out.println(SecApi.validator().jdSsrfExternalCheck(url.toString()));
