@@ -159,7 +159,7 @@ public class DemoController {
      * }
      */
 
-    @RequestMapping("/test")
+    @RequestMapping("/tesA")
     public String test(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
         String prop = request.getParameter("prop");
         String value = request.getParameter("value");
