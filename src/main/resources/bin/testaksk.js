@@ -1,1 +1,1 @@
-accessKey:"oOGYijvxN34IeoTk",secretKey:"nCDyvTGbYNLLsj8Hok3ccm4FlT9zghpfo5hDHlBZ" endpoint:"http://storage.jd.local"
+,HREF:"href",HTTPEQUIV:"http-equiv",INNER_HTML:"innerHTML",ITEM_PROP:"itemprop",NAME:"name",PROPERTY:"property",REL:"rel",SRC:"src",TARGET:"target"}),v={accesskey:"accessKey",charset:"charSet",class:"className",contenteditable:"contentEditable",contextmenu:"contextMenu","http-equiv":"httpEquiv",itemprop:"itemProp",tabindex:"tabIndex"},m={DEFAULT_TITLE:"defaultTitle",DEFER:"defer",
