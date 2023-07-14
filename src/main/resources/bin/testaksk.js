@@ -1,0 +1,1 @@
+accessKey:"oOGYijvxN34IeoTk",secretKey:"nCDyvTGbYNLLsj8Hok3ccm4FlT9zghpfo5hDHlBZ" endpoint:"http://storage.jd.local"
