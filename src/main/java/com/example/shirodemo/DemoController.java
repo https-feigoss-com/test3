@@ -81,7 +81,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.TimeZone;
+import com.github.pagehelper.PageHelper;
 import org.ttzero.excel.reader.ExcelReader;
+
+
 
 @RestController
 public class DemoController {
@@ -93,7 +96,7 @@ public class DemoController {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
         // String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
 
-        ExcelReader reader = ExcelReader.read(new FileInputStream(new File("D:\\caopengfei11\\Downloads\\test2.xlsx")));
+        PageHelper.startPage(1, 1,1);
 
         System.out.println("success!");
         return "ok";
@@ -102,6 +105,8 @@ public class DemoController {
     // Another Bypass
     @RequestMapping(path = "/permit/url")
     public String check(String url) {
+        PageHelper.startPage(1, 1,"order");
+
         return url + ":" + String.valueOf(SecApi.validator().jdSsrfExternalCheck(url));
     }
 
