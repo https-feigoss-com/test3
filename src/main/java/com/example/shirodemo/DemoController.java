@@ -2,6 +2,7 @@ package com.example.shirodemo;
 
 //import org.apache.hadoop.util.Shell.ShellCommandExecutor;
 
+import com.github.pagehelper.PageHelper;
 import com.jd.sec_api.SecApi;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,7 +82,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.TimeZone;
-import com.github.pagehelper.PageHelper;
 import org.ttzero.excel.reader.ExcelReader;
 
 
@@ -105,7 +105,14 @@ public class DemoController {
     // Another Bypass
     @RequestMapping(path = "/permit/url")
     public String check(String url) {
-        PageHelper.startPage(1, 1,"order");
+        PageHelper.startPage(1, 1,url);
+
+        return url + ":" + String.valueOf(SecApi.validator().jdSsrfExternalCheck(url));
+    }
+    // Another Bypass
+    @RequestMapping(path = "/permit/url1")
+    public String check1(int url) {
+        PageHelper.startPage(1, 1,url);
 
         return url + ":" + String.valueOf(SecApi.validator().jdSsrfExternalCheck(url));
     }
