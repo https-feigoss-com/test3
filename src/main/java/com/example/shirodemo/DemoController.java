@@ -104,14 +104,14 @@ public class DemoController {
 
     // Another Bypass
     @RequestMapping(path = "/permit/url")
-    public String check(String url) {
+    public String aaa(String url) {
         PageHelper.startPage(1, 1,url);
 
         return url + ":" + String.valueOf(SecApi.validator().jdSsrfExternalCheck(url));
     }
     // Another Bypass
     @RequestMapping(path = "/permit/url1")
-    public String check1(Boolean url) {
+    public String ccc(Boolean url) {
         PageHelper.startPage(1, 1,url);
         return "o";
 
