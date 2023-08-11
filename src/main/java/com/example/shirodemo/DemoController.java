@@ -1,5 +1,7 @@
 package com.example.shirodemo;
 
+import com.github.pagehelper.Page;
+
 //import org.apache.hadoop.util.Shell.ShellCommandExecutor;
 
 import com.github.pagehelper.PageHelper;
@@ -84,8 +86,6 @@ import java.net.URISyntaxException;
 import java.util.TimeZone;
 import org.ttzero.excel.reader.ExcelReader;
 
-
-
 @RestController
 public class DemoController {
     @Resource
@@ -96,21 +96,21 @@ public class DemoController {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
         // String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
 
-        PageHelper.startPage(1, 1, true);
+        Page<Object> ok = PageHelper.startPage(1, 1, true);
 
         System.out.println("success!");
         return "ok";
     }
 
-    @RequestMapping("/tesA")
+    @RequestMapping("/aaa")
     public String testover(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
         String order = request.getParameter("order");
-        PageHelper.startPage(1, 1, order);
+        Page<Object> ok = PageHelper.startPage(1, 1, order);
         return "ok";
 ;
     }
     
-    @RequestMapping("/tesA")
+    @RequestMapping("/ccc")
     public String testcount(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
         String c =  request.getParameter("count");
         Boolean count = c.contentEquals("1");
