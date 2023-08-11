@@ -102,21 +102,21 @@ public class DemoController {
         return "ok";
     }
 
-    // Another Bypass
-    @RequestMapping(path = "/permit/url")
-    public String aaa(String url) {
-        PageHelper.startPage(1, 1,url);
-
-        return url + ":" + String.valueOf(SecApi.validator().jdSsrfExternalCheck(url));
+    @RequestMapping("/tesA")
+    public String testover(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+        String order = request.getParameter("order");
+        PageHelper.startPage(1, 1, order);
+        return "ok";
+;
     }
-    // Another Bypass
-    @RequestMapping(path = "/permit/url1")
-    public String ccc(Boolean url) {
-        PageHelper.startPage(1, 1,url);
-        return "o";
-
+    
+    @RequestMapping("/tesA")
+    public String testcount(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+        String c =  request.getParameter("count");
+        Boolean count = c.contentEquals("1");
+        PageHelper.startPage(1, 1, count);
+        return "ok";
     }
-
     /*
      * @RequestMapping(path = "/testJndi") public String testJndi(final String url)
      * throws NamingException, RemoteException { final Properties env = new
