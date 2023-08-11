@@ -107,7 +107,6 @@ public class DemoController {
         String order = request.getParameter("order");
         Page<Object> ok = PageHelper.startPage(1, 1, order);
         return "ok";
-;
     }
     
     @RequestMapping("/ccc")
