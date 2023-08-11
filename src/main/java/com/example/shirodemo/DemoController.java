@@ -109,8 +109,6 @@ public class DemoController {
             throws IllegalAccessException, InvocationTargetException, MalformedURLException, IOException {
         String order = request.getParameter("order");
         Page<Object> ok = PageHelper.startPage(1, 1, order);
-        URL url =new URL(order);
-        url.openConnection();
         return "ok";
     }
     
