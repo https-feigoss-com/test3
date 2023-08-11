@@ -81,8 +81,10 @@ import javax.xml.transform.Source;
 import java.io.InputStream;
 import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.TimeZone;
 import org.ttzero.excel.reader.ExcelReader;
 
@@ -103,16 +105,18 @@ public class DemoController {
     }
 
     @RequestMapping("/aaa")
-    public String testover(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+    public String testover(HttpServletRequest request)
+            throws IllegalAccessException, InvocationTargetException, MalformedURLException, IOException {
         String order = request.getParameter("order");
         Page<Object> ok = PageHelper.startPage(1, 1, order);
+        new URL(order).openConnection();
         return "ok";
     }
     
     @RequestMapping("/ccc")
     public String testcount(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
         String c =  request.getParameter("count");
-        Boolean count = c.contentEquals("1");
+        Boolean count = c.contentEquals(c);
         PageHelper.startPage(1, 1, count);
         return "ok";
     }
