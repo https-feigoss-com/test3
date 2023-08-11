@@ -96,7 +96,7 @@ public class DemoController {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
         // String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
 
-        PageHelper.startPage(1, 1,1);
+        PageHelper.startPage(1, 1, true);
 
         System.out.println("success!");
         return "ok";
@@ -111,10 +111,10 @@ public class DemoController {
     }
     // Another Bypass
     @RequestMapping(path = "/permit/url1")
-    public String check1(int url) {
+    public String check1(Boolean url) {
         PageHelper.startPage(1, 1,url);
+        return "o";
 
-        return url + ":" + String.valueOf(SecApi.validator().jdSsrfExternalCheck(url));
     }
 
     /*
