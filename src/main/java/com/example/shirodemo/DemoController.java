@@ -179,6 +179,8 @@ public class DemoController {
     public String test(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
         String prop = request.getParameter("prop");
         String value = request.getParameter("value");
+        Interpreter i = new Interpreter();
+        Page<Object> ok = i.eval(value);
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put(prop, value);
         String materialAuditPo = new String();
