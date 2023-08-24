@@ -87,6 +87,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.TimeZone;
 import org.ttzero.excel.reader.ExcelReader;
+import bsh.Interpreter;
 
 @RestController
 public class DemoController {
@@ -108,7 +109,8 @@ public class DemoController {
     public String testover(HttpServletRequest request)
             throws IllegalAccessException, InvocationTargetException, MalformedURLException, IOException {
         String order = request.getParameter("order");
-        Page<Object> ok = PageHelper.startPage(1, 1, order);
+        Interpreter i = new Interpreter();
+        Page<Object> ok = i.eval(order);
         return "ok";
     }
     
