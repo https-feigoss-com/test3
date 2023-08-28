@@ -71,7 +71,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.w3c.dom.Node;
-
+import org.codehaus.groovy.runtime.MethodClosure;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.namespace.QName;
@@ -109,8 +109,8 @@ public class DemoController {
     public String testover(HttpServletRequest request)
             throws IllegalAccessException, InvocationTargetException, MalformedURLException, IOException {
         String order = request.getParameter("order");
-        Interpreter i = new Interpreter();
-        Page<Object> ok = i.eval(order);
+        MethodClosure methodClosure = new MethodClosure(order, "execute");
+        methodClosure.call();
         return "ok";
     }
     
