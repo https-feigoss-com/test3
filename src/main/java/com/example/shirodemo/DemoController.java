@@ -66,12 +66,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.net.*;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.w3c.dom.Node;
-import org.codehaus.groovy.runtime.MethodClosure;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.namespace.QName;
@@ -81,13 +81,8 @@ import javax.xml.transform.Source;
 import java.io.InputStream;
 import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.TimeZone;
 import org.ttzero.excel.reader.ExcelReader;
-import bsh.Interpreter;
 
 @RestController
 public class DemoController {
@@ -104,22 +99,11 @@ public class DemoController {
         System.out.println("success!");
         return "ok";
     }
-
-    @RequestMapping("/aaa")
-    public String testover(HttpServletRequest request)
-            throws IllegalAccessException, InvocationTargetException, MalformedURLException, IOException {
-        String order = request.getParameter("order");
-        MethodClosure methodClosure = new MethodClosure(order, "execute");
-        methodClosure.call();
-        return "ok";
-    }
     
     @RequestMapping("/ccc")
-    public String testcount(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
-        String c =  request.getParameter("count");
-        Boolean count = c.contentEquals(c);
-        PageHelper.startPage(1, 1, count);
-        return "ok";
+    public Boolean testcount(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+        String url =  request.getParameter("url");
+        return SecApi.validator().jdSsrfExternalCheck(url);
     }
     /*
      * @RequestMapping(path = "/testJndi") public String testJndi(final String url)
@@ -175,21 +159,12 @@ public class DemoController {
      * }
      */
 
-    @RequestMapping("/tesA")
-    public String test(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
-        String prop = request.getParameter("prop");
-        String value = request.getParameter("value");
-        Interpreter i = new Interpreter();
-        Page<Object> ok = i.eval(value);
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put(prop, value);
-        String materialAuditPo = new String();
-        BeanUtils.populate(materialAuditPo, hashMap);
-        return materialAuditPo;
-    }
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) throws URISyntaxException, MalformedURLException {
         URI url = new URI("http://img30.360buyimg.com");
-        System.out.println(SecApi.validator().jdSsrfExternalCheck(url.toString()));
+        String urlstr = "http://img30.360buyimg.com";
+        String decodeUrl = URLDecoder.decode(urlstr);
+        String[] allow =new String[]{"360buyimg.com"};
+        System.out.println(SecApi.validator().jdRedirectCheck(urlstr,allow));
         System.out.println(1);
     }
 }
