@@ -4,3 +4,6 @@ preferQueryMode=SIMPLE
 -?
 
 remoteServiceCaller
+
+
+isFullyAuthenticated
