@@ -111,7 +111,7 @@ public class DemoController {
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();
 
-    Set<ConstraintViolation<Job>> constraintViolations = validator.validate(job);
+    Set<ConstraintViolation<Job>> constraintViolations = validator.validate(value);
     System.out.println("errmsg");
     String errmsg = constraintViolations.iterator().next().getMessage();
     System.out.println(errmsg);
