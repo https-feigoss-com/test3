@@ -104,10 +104,10 @@ public class DemoController {
     private SecApi secapi;
     @RequestMapping(path = "/CVE-2021-41269")
     public String cve_2021_41269(String value) throws FileNotFoundException, IOException {
-    Job job = new Job();
+    //Job job = new Job();
     //job.setCronExpression("T(java.lang.Runtime).getRuntime().exec(\"cmd whami\"); // 4 5 [${''.getClass().forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('js').eval(validatedValue)}]");
-    job.setCronExpression(value);
-
+    //job.setCronExpression(value);
+    Job job = new Job(value);
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();
 
@@ -118,17 +118,17 @@ public class DemoController {
         return "ok";
     }
     public static class Job {
-    @Cron(type = CronType.SPRING)
-    private String cronExpression;
+            @Cron(type = CronType.SPRING)
+            private String cronExpression;
 
-    String getCronExpression() {
-      return cronExpression;
+            String getCronExpression() {
+            return cronExpression;
+            }
+            Job(String value) {}
+            void setCronExpression(String cronExpression) {
+            this.cronExpression = cronExpression;
+            }
     }
-
-    void setCronExpression(String cronExpression) {
-      this.cronExpression = cronExpression;
-    }
-  }
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
