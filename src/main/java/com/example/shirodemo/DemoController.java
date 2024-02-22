@@ -104,10 +104,9 @@ public class DemoController {
     private SecApi secapi;
     @RequestMapping(path = "/CVE-2021-41269")
     public String cve_2021_41269(String value) throws FileNotFoundException, IOException {
-    //Job job = new Job();
+    Job job = new Job(value);
     //job.setCronExpression("T(java.lang.Runtime).getRuntime().exec(\"cmd whami\"); // 4 5 [${''.getClass().forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('js').eval(validatedValue)}]");
     //job.setCronExpression(value);
-    Job job = new Job(value);
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();
 
