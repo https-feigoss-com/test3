@@ -1,11 +1,15 @@
 package com.example.shirodemo;
 
+import com.cronutils.model.CronType;
+import com.cronutils.validation.Cron;
 import com.github.pagehelper.Page;
 
 //import org.apache.hadoop.util.Shell.ShellCommandExecutor;
 
 import com.github.pagehelper.PageHelper;
 import com.jd.sec_api.SecApi;
+
+import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,6 +73,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.w3c.dom.Node;
@@ -84,11 +90,45 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.TimeZone;
 import org.ttzero.excel.reader.ExcelReader;
 
+//CVE-2021-41269
+
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
 @RestController
 public class DemoController {
     @Resource
     private SecApi secapi;
+    @RequestMapping(path = "/CVE-2021-41269")
+    public String cve_2021_41269(String value) throws FileNotFoundException, IOException {
+    Job job = new Job();
+    //job.setCronExpression("T(java.lang.Runtime).getRuntime().exec(\"cmd whami\"); // 4 5 [${''.getClass().forName('javax.script.ScriptEngineManager').newInstance().getEngineByName('js').eval(validatedValue)}]");
+    job.setCronExpression(value);
 
+    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+    Validator validator = factory.getValidator();
+
+    Set<ConstraintViolation<Job>> constraintViolations = validator.validate(job);
+    System.out.println("errmsg");
+    String errmsg = constraintViolations.iterator().next().getMessage();
+    System.out.println(errmsg);
+        return "ok";
+    }
+    public static class Job {
+    @Cron(type = CronType.SPRING)
+    private String cronExpression;
+
+    String getCronExpression() {
+      return cronExpression;
+    }
+
+    void setCronExpression(String cronExpression) {
+      this.cronExpression = cronExpression;
+    }
+  }
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
