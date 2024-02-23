@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.util.UriComponentsBuilder;
 import org.apache.commons.beanutils.BeanUtils;
 //import com.sun.jndi.rmi.registry.ReferenceWrapper;
 //import org.w3c.dom.Document;
@@ -127,6 +127,15 @@ public class DemoController {
             this.cronExpression = cronExpression;
             }
     }
+
+    @RequestMapping(path = "/CVE-2024-22243")
+    public String cve_2024_22243(String value) throws FileNotFoundException, IOException {
+   
+
+        UriComponentsBuilder.fromUriString(value);
+        return "ok";
+    }
+
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
