@@ -98,6 +98,9 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+//CVE-2022-0265
+import com.hazelcast.config.Config;
+
 @RestController
 public class DemoController {
     @Resource
@@ -133,6 +136,13 @@ public class DemoController {
    
 
         UriComponentsBuilder.fromUriString(value);
+        return "ok";
+    }
+
+    @RequestMapping(path = "/CVE-2022-0265")
+    public String cve_2022_0265(String value) throws FileNotFoundException, IOException {
+        InputStream input = String.class.getResourceAsStream("/xxe.xml");
+        Config cfg = Config.loadFromStream(input);
         return "ok";
     }
 
