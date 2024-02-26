@@ -141,7 +141,6 @@ public class DemoController {
 
     @RequestMapping(path = "/CVE-2022-0265")
     public String cve_2022_0265(String value) throws FileNotFoundException, IOException {
-        InputStream input = String.getResourceAsStream(value);
         Config cfg = Config.loadFromStream(value);
         return "ok";
     }
