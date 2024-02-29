@@ -79,8 +79,11 @@ import org.xml.sax.InputSource;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.net.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import org.w3c.dom.Node;
@@ -212,6 +215,33 @@ public class DemoController {
             return "Error parsing XML: " + e.getMessage();
         }
     }
+    @PostMapping("/rce")
+    public void rce(String maliciousClassName) {
+        // 恶意类名，这个类应该存在于classpath中，并且包含恶意代码
+        //String maliciousClassName = "EvilClass";
+
+        // JDBC连接属性
+        Properties props = new Properties();
+        props.setProperty("user", "yourUsername");
+        props.setProperty("password", "yourPassword");
+        props.setProperty("authenticationPluginClassName", maliciousClassName); // 设置为恶意类名
+
+        // PostgreSQL JDBC URL
+        String jdbcUrl = "jdbc:postgresql://yourServer:5432/yourDatabase";
+
+        try {
+            // 尝试建立连接，如果存在漏洞，将尝试实例化恶意类
+            Connection conn = DriverManager.getConnection(jdbcUrl, props);
+
+            // 如果连接成功，并不意味着攻击成功，只是说明驱动尝试实例化了提供的类
+            System.out.println("Connected to the database.");
+            // ... 其他数据库操作
+
+        } catch (Exception e) {
+            // 处理异常，可能是因为类不存在，或者没有实现期望的接口，或者有其他的安全措施阻止了攻击
+            e.printStackTrace();
+        }
+    }
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
@@ -290,4 +320,5 @@ public class DemoController {
         System.out.println(SecApi.validator().jdRedirectCheck(urlstr,allow));
         System.out.println(1);
     }
+    
 }
