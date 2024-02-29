@@ -115,12 +115,13 @@
             <artifactId>hazelcast</artifactId>
             <version>5.0</version>
         </dependency>
-    </dependencies>
-    <dependency>
+        <dependency>
             <groupId>org.codehaus.plexus</groupId>
             <artifactId>plexus-utils</artifactId>
             <version>3.0.15</version> <!-- Use the latest version available -->
-    </dependency>
+        </dependency>
+    </dependencies>
+
     <!--<repositories>
         <repository>
             <id>maven-restlet</id>
