@@ -140,6 +140,11 @@
             <artifactId>jave-core</artifactId>
             <version>3.3.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-archiver</artifactId>
+            <version>4.7.0</version> <!-- 使用低于 4.8.0 的版本以模拟漏洞 -->
+        </dependency>
     </dependencies>
 
     <!--<repositories>

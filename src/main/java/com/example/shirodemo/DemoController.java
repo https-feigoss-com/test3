@@ -4,6 +4,7 @@ import com.cronutils.model.CronType;
 import com.cronutils.validation.Cron;
 import com.github.pagehelper.Page;
 
+import org.codehaus.plexus.archiver.zip.ZipUnArchiver;
 //import org.apache.hadoop.util.Shell.ShellCommandExecutor;
 import org.codehaus.plexus.util.cli.Commandline;
 import org.ho.yaml.Yaml;
@@ -18,13 +19,16 @@ import ws.schild.jave.process.ProcessWrapper;
 
 import org.slf4j.ext.EventData;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.apache.commons.beanutils.BeanUtils;
 //import com.sun.jndi.rmi.registry.ReferenceWrapper;
@@ -63,6 +67,7 @@ import java.util.Map;*/
 //import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import com.jd.jss.Credential;
@@ -184,7 +189,26 @@ public class DemoController {
         }
         return "Event logged successfully";
     }
+    @PostMapping("/extract")
+    public ResponseEntity<String> extractArchive(@RequestParam("file") MultipartFile file) throws IOException {
+        // 将上传的文件保存到临时目录
+        File tempFile = File.createTempFile("uploadedArchive", ".zip");
+        try (FileOutputStream fos = new FileOutputStream(tempFile)) {
+            fos.write(file.getBytes());
+        }
 
+        // 创建 ZipUnArchiver 实例
+        ZipUnArchiver zipUnArchiver = new ZipUnArchiver(tempFile);
+        // 设置解压的目标目录
+        File outputDirectory = new File("/path/to/output/directory"); // 请确保这个目录存在且安全
+        zipUnArchiver.setDestDirectory(outputDirectory);
+
+        // 提取 ZIP 文件
+        zipUnArchiver.extract();
+
+        // 返回成功消息
+        return ResponseEntity.ok("Archive extracted successfully.");
+    }
     @PostMapping("/deserializeYaml")
     public String deserializeYaml(@RequestBody String yamlInput) {
         Yaml yaml = new Yaml();
