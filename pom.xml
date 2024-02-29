@@ -120,6 +120,11 @@
             <artifactId>plexus-utils</artifactId>
             <version>3.0.15</version> <!-- Use the latest version available -->
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-ext</artifactId>
+            <version>1.7.24</version> <!-- Use this version or later to avoid the vulnerability -->
+        </dependency>
     </dependencies>
 
     <!--<repositories>

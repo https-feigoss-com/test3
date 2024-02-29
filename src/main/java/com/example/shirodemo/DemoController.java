@@ -12,6 +12,7 @@ import com.jd.sec_api.SecApi;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -101,6 +102,7 @@ import javax.validation.ValidatorFactory;
 
 //CVE-2022-0265
 import com.hazelcast.config.Config;
+import com.hazelcast.map.impl.event.EventData;
 
 @RestController
 public class DemoController {
@@ -161,6 +163,19 @@ public class DemoController {
         } catch (Exception e) {
             // 错误处理
         }
+    }
+    @PostMapping("/logEvent")
+    public String logEvent(@RequestBody String xmlData) {
+        try {
+            // 这里的EventData类在SLF4J 1.7.25及更早版本中存在反序列化漏洞
+            EventData data = new EventData(xmlData);
+            // 假设这里会将EventData记录到日志中
+            // ...
+        } catch (Exception e) {
+            // 在实际应用中，应该处理异常，但这里我们只是返回错误信息
+            return "Error logging event: " + e.getMessage();
+        }
+        return "Event logged successfully";
     }
 
 
