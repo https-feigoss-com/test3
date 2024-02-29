@@ -163,7 +163,7 @@ public class DemoController {
         }
     }
 
-}
+
 
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
