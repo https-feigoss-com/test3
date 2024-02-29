@@ -130,6 +130,11 @@
             <artifactId>jyaml</artifactId>
             <version>1.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.7.0</version> <!-- Use the version with the vulnerability -->
+        </dependency>
     </dependencies>
 
     <!--<repositories>
