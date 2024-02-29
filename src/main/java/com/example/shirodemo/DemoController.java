@@ -8,7 +8,7 @@ import com.github.pagehelper.Page;
 import org.codehaus.plexus.util.cli.Commandline;
 import com.github.pagehelper.PageHelper;
 import com.jd.sec_api.SecApi;
-
+import org.slf4j.ext.EventData;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,10 +66,6 @@ import javax.annotation.Resource;
 //import javax.xml.parsers.DocumentBuilderFactory;
 import javax.servlet.ServletRequest;
 import org.xml.sax.InputSource;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-//conf import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.net.*;
@@ -77,11 +73,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.w3c.dom.Node;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.Source;
@@ -94,7 +86,6 @@ import org.ttzero.excel.reader.ExcelReader;
 
 //CVE-2021-41269
 
-import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -102,7 +93,6 @@ import javax.validation.ValidatorFactory;
 
 //CVE-2022-0265
 import com.hazelcast.config.Config;
-import com.hazelcast.map.impl.event.EventData;
 
 @RestController
 public class DemoController {
