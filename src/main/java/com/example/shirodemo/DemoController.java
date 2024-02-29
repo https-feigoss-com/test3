@@ -145,9 +145,7 @@ public class DemoController {
         return "ok";
     }
 
-@RequestMapping("/CVE20171000487")
-public class CVE20171000487 {
-    @PostMapping("/executeCommand")
+
     public void executeCommand(String userInput) {
         // 注意：以下代码是示例，实际使用中应避免这样做。
         Commandline commandLine = new Commandline();
