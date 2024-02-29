@@ -11,6 +11,7 @@ import com.jd.sec_api.SecApi;
 
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -145,7 +146,7 @@ public class DemoController {
         return "ok";
     }
 
-
+    @PostMapping("/executeCommand")
     public void executeCommand(String userInput) {
         // 注意：以下代码是示例，实际使用中应避免这样做。
         Commandline commandLine = new Commandline();
