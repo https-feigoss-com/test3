@@ -66,6 +66,8 @@ import javax.annotation.Resource;
 //import javax.xml.parsers.DocumentBuilderFactory;
 import javax.servlet.ServletRequest;
 import org.xml.sax.InputSource;
+//import org.yaml.snakeyaml.Yaml;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.net.*;
@@ -168,7 +170,19 @@ public class DemoController {
         return "Event logged successfully";
     }
 
+    @PostMapping("/deserializeYaml")
+    public String deserializeYaml(@RequestBody String yamlInput) {
+        Yaml yaml = new Yaml();
 
+        try {
+            // 这里直接使用 Yaml#load 对传入的 YAML 字符串进行反序列化
+            // 这是不安全的，因为它可以执行任意代码
+            Object result = yaml.load(yamlInput);
+            return "Deserialized object: " + result;
+        } catch (Exception e) {
+            return "Exception during deserialization: " + e.getMessage();
+        }
+    }
 
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
