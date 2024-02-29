@@ -116,6 +116,11 @@
             <version>5.0</version>
         </dependency>
     </dependencies>
+    <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-utils</artifactId>
+            <version>3.0.15</version> <!-- Use the latest version available -->
+    </dependency>
     <!--<repositories>
         <repository>
             <id>maven-restlet</id>

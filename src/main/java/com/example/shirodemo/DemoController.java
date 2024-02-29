@@ -5,7 +5,7 @@ import com.cronutils.validation.Cron;
 import com.github.pagehelper.Page;
 
 //import org.apache.hadoop.util.Shell.ShellCommandExecutor;
-
+import org.codehaus.plexus.util.cli.Commandline;
 import com.github.pagehelper.PageHelper;
 import com.jd.sec_api.SecApi;
 
@@ -144,6 +144,27 @@ public class DemoController {
         Config cfg = Config.loadFromStream(value);
         return "ok";
     }
+
+@RequestMapping("/CVE20171000487")
+public class CVE20171000487 {
+    @PostMapping("/executeCommand")
+    public void executeCommand(String userInput) {
+        // 注意：以下代码是示例，实际使用中应避免这样做。
+        Commandline commandLine = new Commandline();
+        // 如果userInput未经适当验证或转义，则可能导致命令注入
+        commandLine.setExecutable(userInput);
+
+        // 其他设置...
+
+        // 执行命令行
+        try {
+            commandLine.execute();
+        } catch (Exception e) {
+            // 错误处理
+        }
+    }
+
+}
 
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
