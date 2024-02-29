@@ -135,6 +135,11 @@
             <artifactId>liquibase-core</artifactId>
             <version>4.7.0</version> <!-- Use the version with the vulnerability -->
         </dependency>
+        <dependency>
+            <groupId>ws.schild</groupId>
+            <artifactId>jave-core</artifactId>
+            <version>3.3.1</version>
+        </dependency>
     </dependencies>
 
     <!--<repositories>
