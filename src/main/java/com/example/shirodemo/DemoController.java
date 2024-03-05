@@ -336,8 +336,7 @@ public class DemoController {
     @RequestMapping("/testssrf")
     public String testSsrf(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
         String url =  request.getParameter("url");
-        URL u = new URL(url);
-        u.openStream();
+        new URL(url).openStream();
         return "ok";
     }
     /*
