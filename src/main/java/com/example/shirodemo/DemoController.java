@@ -332,6 +332,13 @@ public class DemoController {
         String url =  request.getParameter("url");
         return SecApi.validator().jdSsrfExternalCheck(url);
     }
+
+    @RequestMapping("/testssrf")
+    public String testSsrf(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+        String url =  request.getParameter("url");
+        new URL(url).openStream();
+        return "ok"；
+    }
     /*
      * @RequestMapping(path = "/testJndi") public String testJndi(final String url)
      * throws NamingException, RemoteException { final Properties env = new
