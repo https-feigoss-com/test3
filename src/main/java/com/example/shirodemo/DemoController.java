@@ -18,7 +18,6 @@ import liquibase.sdk.resource.MockResourceAccessor;
 import ws.schild.jave.process.ProcessWrapper;
 
 import org.slf4j.ext.EventData;
-import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.apache.commons.beanutils.BeanUtils;
 //import com.sun.jndi.rmi.registry.ReferenceWrapper;
 //import org.w3c.dom.Document;
 //import org.w3c.dom.NodeList;
@@ -65,7 +63,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;*/
 //import java.util.Properties;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
