@@ -102,6 +102,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.TimeZone;
 import org.ttzero.excel.reader.ExcelReader;
@@ -118,8 +119,7 @@ import com.hazelcast.config.Config;
 
 @RestController
 public class DemoController {
-    @Resource
-    private SecApi secapi;
+
     @RequestMapping(path = "/CVE-2021-41269")
     public String cve_2021_41269(String value) throws FileNotFoundException, IOException {
     Job job = new Job();
@@ -156,7 +156,7 @@ public class DemoController {
 
     @RequestMapping(path = "/CVE-2022-0265")
     public String cve_2022_0265(String value) throws FileNotFoundException, IOException {
-        Config cfg = Config.loadFromStream(value);
+        //Config cfg = Config.loadFromStream(value);
         return "ok";
     }
 
@@ -318,8 +318,8 @@ public class DemoController {
     }
     @RequestMapping(path = "/permit/{value}")
     public String permit(@PathVariable final String value) throws FileNotFoundException, IOException {
-        // String safe = SecApi.encoder().encodeForSQL(MySQLCodec.getInstance(), value);
-        // String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
+        boolean safe = SecApi.validator().jdRedirectCheck(value);
+        //String safe = SecApi.validator().isValidSafeSqlArg(value)?"true":"false";
 
         Page<Object> ok = PageHelper.startPage(1, 1, true);
 
@@ -327,14 +327,14 @@ public class DemoController {
         return "ok";
     }
     
-    @RequestMapping("/ccc")
+   /*  @RequestMapping("/ccc")
     public Boolean testcount(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
         String url =  request.getParameter("url");
         return SecApi.validator().jdSsrfExternalCheck(url);
     }
-
+*/
     @RequestMapping("/testssrf")
-    public String testSsrf(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException {
+    public String testSsrf(HttpServletRequest request) throws IllegalAccessException, InvocationTargetException, MalformedURLException, IOException {
         String url =  request.getParameter("url");
         new URL(url).openStream();
         return "ok";
@@ -393,7 +393,7 @@ public class DemoController {
      * }
      */
 
-    public static void main(String[] args) throws URISyntaxException, MalformedURLException {
+    public static void main(String[] args) throws URISyntaxException, MalformedURLException, UnsupportedEncodingException {
         URI url = new URI("http://img30.360buyimg.com");
         String urlstr = "http://img30.360buyimg.com";
         String decodeUrl = URLDecoder.decode(urlstr);
