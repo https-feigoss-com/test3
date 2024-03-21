@@ -240,7 +240,7 @@ public class DemoController {
             return "Error parsing XML: " + e.getMessage();
         }
     }
-    /*@PostMapping("/rce")
+    @PostMapping("/rce")
     public void rce(String maliciousClassName) {
         // 恶意类名，这个类应该存在于classpath中，并且包含恶意代码
         //String maliciousClassName = "EvilClass";
@@ -266,7 +266,7 @@ public class DemoController {
             // 处理异常，可能是因为类不存在，或者没有实现期望的接口，或者有其他的安全措施阻止了攻击
             e.printStackTrace();
         }
-    }*/
+    }
     @PostMapping("/CVE202348909")
     public void CVE202348909(String inputFilePath) throws IOException {
 
