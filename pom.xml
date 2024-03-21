@@ -38,9 +38,9 @@
                 <version>2.1.5.RELEASE</version>
             </dependency>      
             <dependency>
-                <groupId>org.apache.xmlrpc</groupId>
-                <artifactId>xmlrpc-client</artifactId>
-                <version>3.1</version>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-common</artifactId>
+                <version>3.0.0</version>
             </dependency>       
         <!--<dependency>
             <groupId>org.apache.hadoop</groupId>
