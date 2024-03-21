@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
     }
 )
 @Import(JDSecurityPropertyCleanService.class)*/
+@EnableHystrixDashboard
 @SpringBootApplication
 public class ShiroDemoApplication {
 
