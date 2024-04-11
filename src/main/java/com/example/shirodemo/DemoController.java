@@ -253,7 +253,7 @@ public class DemoController {
 
         // PostgreSQL JDBC URL
         String jdbcUrl = "jdbc:postgresql://yourServer:5432/yourDatabase";
-
+ 
         try {
             // 尝试建立连接，如果存在漏洞，将尝试实例化恶意类
             Connection conn = DriverManager.getConnection(jdbcUrl, props);
@@ -267,6 +267,7 @@ public class DemoController {
             e.printStackTrace();
         }
     }
+
     @PostMapping("/CVE202348909")
     public void CVE202348909(String inputFilePath) throws IOException {
 

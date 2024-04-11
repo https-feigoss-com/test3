@@ -14,6 +14,7 @@ This request can succeed
 ```http request
 GET /permit/any HTTP/1.1
 Token: 4ra1n
+
 ```
 
 Access is not allowed when there is no token request header
