@@ -258,6 +258,7 @@ public class DemoController {
             // 尝试建立连接，如果存在漏洞，将尝试实例化恶意类
             Connection conn = DriverManager.getConnection(jdbcUrl, props);
 
+            
             // 如果连接成功，并不意味着攻击成功，只是说明驱动尝试实例化了提供的类
             System.out.println("Connected to the database.");
             // ... 其他数据库操作
@@ -267,7 +268,7 @@ public class DemoController {
             e.printStackTrace();
         }
     }
-    
+
     @PostMapping("/CVE202348909")
     public void CVE202348909(String inputFilePath) throws IOException {
 
